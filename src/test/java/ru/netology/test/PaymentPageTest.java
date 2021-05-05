@@ -1,22 +1,36 @@
 package ru.netology.test;
 
+import com.codeborne.selenide.logevents.SelenideLogger;
+import io.qameta.allure.selenide.AllureSelenide;
 import lombok.val;
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import ru.netology.data.DataHelper;
-import ru.netology.page.CreditPage;
+import ru.netology.data.DbHelper;
 import ru.netology.page.MainPage;
 import ru.netology.page.PaymentPage;
 
 import static com.codeborne.selenide.Selenide.open;
-import static com.codeborne.selenide.Selenide.page;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class PaymentPageTest {
 
+    @BeforeAll
+    static void setUpAll() {
+        SelenideLogger.addListener("allure", new AllureSelenide());
+    }
+
+    @AfterAll
+    static void tearDownAll() {
+        SelenideLogger.removeListener("allure");
+    }
+
     @BeforeEach
     void setUp() {
         open("http://localhost:8080");
+        DbHelper.cleanDataBase();
     }
 
     @Test
@@ -26,6 +40,7 @@ public class PaymentPageTest {
         val paymentPage = new PaymentPage();
         paymentPage.fillForm(DataHelper.getApprovedCard());
         paymentPage.successfulOperation();
+        assertEquals("APPROVED", DbHelper.getPaymentStatus());
     }
 
     @Test
@@ -35,11 +50,12 @@ public class PaymentPageTest {
         val paymentPage = new PaymentPage();
         paymentPage.fillForm(DataHelper.getDeclinedCard());
         paymentPage.rejectedOperation();
+        assertEquals("DECLINED",DbHelper.getCreditStatus());
     }
 
 
     @Test
-    void shouldDoubleNameInFieldOwnerApprovedCard(){
+    void shouldDoubleNameInFieldOwnerApprovedCard() {
         MainPage mainPage = new MainPage();
         mainPage.transferPaymentPage();
         val paymentPage = new PaymentPage();
@@ -57,7 +73,7 @@ public class PaymentPageTest {
     }
 
     @Test
-    void shouldShortNameInFieldOwnerApprovedCard(){
+    void shouldShortNameInFieldOwnerApprovedCard() {
         MainPage mainPage = new MainPage();
         mainPage.transferPaymentPage();
         val paymentPage = new PaymentPage();
@@ -81,108 +97,142 @@ public class PaymentPageTest {
         val paymentPage = new PaymentPage();
         paymentPage.fillForm(DataHelper.getEmptyForm());
         paymentPage.shouldInvalidField();
-        assertEquals("Неверный формат",paymentPage.shouldInvalidField());
+        assertEquals("Неверный формат", paymentPage.shouldInvalidField());
     }
 
     @Test
-    void shouldInvalidMonthApprovedCard(){
+    void shouldInvalidMonthApprovedCard() {
         MainPage mainPage = new MainPage();
         mainPage.transferPaymentPage();
         val paymentPage = new PaymentPage();
         paymentPage.fillForm(DataHelper.getInvalidMonthApprovedCard());
-        assertEquals("Неверно указан срок действия карты",paymentPage.shouldInvalidField());
+        assertEquals("Неверно указан срок действия карты", paymentPage.shouldInvalidField());
     }
 
     @Test
-    void shouldInvalidMonthDeclinedCard(){
+    void shouldInvalidMonthDeclinedCard() {
         MainPage mainPage = new MainPage();
         mainPage.transferPaymentPage();
         val paymentPage = new PaymentPage();
         paymentPage.fillForm(DataHelper.getInvalidMonthDeclinedCard());
-        assertEquals("Неверно указан срок действия карты",paymentPage.shouldInvalidField());
+        assertEquals("Неверно указан срок действия карты", paymentPage.shouldInvalidField());
     }
 
     @Test
-    void shouldBygoneMonthApprovedCard(){
+    void shouldBygoneMonthApprovedCard() {
         MainPage mainPage = new MainPage();
         mainPage.transferPaymentPage();
         val paymentPage = new PaymentPage();
         paymentPage.fillForm(DataHelper.getBygoneMonthApprovedCard());
-        assertEquals("Неверно указан срок действия карты",paymentPage.shouldInvalidField());
+        assertEquals("Неверно указан срок действия карты", paymentPage.shouldInvalidField());
     }
 
     @Test
-    void shouldBygoneMonthDeclinedCard(){
+    void shouldBygoneMonthDeclinedCard() {
         MainPage mainPage = new MainPage();
         mainPage.transferPaymentPage();
         val paymentPage = new PaymentPage();
         paymentPage.fillForm(DataHelper.getBygoneMonthDeclinedCard());
-        assertEquals("Неверно указан срок действия карты",paymentPage.shouldInvalidField());
+        assertEquals("Неверно указан срок действия карты", paymentPage.shouldInvalidField());
     }
 
     @Test
-    void shouldIncompleteFieldPaymentPage(){
+    void shouldIncompleteFieldPaymentPage() {
         MainPage mainPage = new MainPage();
         mainPage.transferPaymentPage();
         val paymentPage = new PaymentPage();
         paymentPage.fillForm(DataHelper.getIncompleteField());
-        assertEquals("Неверный формат",paymentPage.shouldInvalidField());
+        assertEquals("Неверный формат", paymentPage.shouldInvalidField());
     }
 
     @Test
-    void shouldSpecialCharactersInFieldOwnerApprovedCard(){
+    void shouldSpecialCharactersInFieldOwnerApprovedCard() {
         MainPage mainPage = new MainPage();
         mainPage.transferPaymentPage();
         val paymentPage = new PaymentPage();
         paymentPage.fillForm(DataHelper.getSpecialCharactersInFieldOwnerApprovedCard());
-        assertEquals("Неверный формат",paymentPage.shouldInvalidField());
+        assertEquals("Неверный формат", paymentPage.shouldInvalidField());
     }
 
     @Test
-    void shouldSpecialCharactersInFieldOwnerDeclinedCard(){
+    void shouldSpecialCharactersInFieldOwnerDeclinedCard() {
         MainPage mainPage = new MainPage();
         mainPage.transferPaymentPage();
         val paymentPage = new PaymentPage();
         paymentPage.fillForm(DataHelper.getSpecialCharactersInFieldOwnerDeclinedCard());
-        assertEquals("Неверный формат",paymentPage.shouldInvalidField());
+        assertEquals("Неверный формат", paymentPage.shouldInvalidField());
     }
 
     @Test
-    void shouldOneSymbolInFieldApprovedCard(){
+    void shouldOneSymbolInFieldApprovedCard() {
         MainPage mainPage = new MainPage();
         mainPage.transferPaymentPage();
         val paymentPage = new PaymentPage();
         paymentPage.fillForm(DataHelper.getOneSymbolInFieldOwnerApprovedCard());
-        assertEquals("Неверный формат",paymentPage.shouldInvalidField());
+        assertEquals("Неверный формат", paymentPage.shouldInvalidField());
     }
 
     @Test
-    void shouldOneSymbolInFieldDeclinedCard(){
+    void shouldOneSymbolInFieldDeclinedCard() {
         MainPage mainPage = new MainPage();
         mainPage.transferPaymentPage();
         val paymentPage = new PaymentPage();
         paymentPage.fillForm(DataHelper.getOneSymbolInFieldOwnerDeclinedCard());
-        assertEquals("Неверный формат",paymentPage.shouldInvalidField());
+        assertEquals("Неверный формат", paymentPage.shouldInvalidField());
     }
 
     @Test
-    void shouldNumberInFieldOwnerApprovedCard(){
+    void shouldNumberInFieldOwnerApprovedCard() {
         MainPage mainPage = new MainPage();
         mainPage.transferPaymentPage();
         val paymentPage = new PaymentPage();
         paymentPage.fillForm(DataHelper.getNumberInFieldOwnerApprovedCard());
-        assertEquals("Неверный формат",paymentPage.shouldInvalidField());
+        assertEquals("Неверный формат", paymentPage.shouldInvalidField());
     }
 
     @Test
-    void shouldNumberInFieldOwnerDeclinedCard(){
+    void shouldNumberInFieldOwnerDeclinedCard() {
         MainPage mainPage = new MainPage();
         mainPage.transferPaymentPage();
         val paymentPage = new PaymentPage();
         paymentPage.fillForm(DataHelper.getNumberInFieldOwnerDeclinedCard());
-        assertEquals("Неверный формат",paymentPage.shouldInvalidField());
+        assertEquals("Неверный формат", paymentPage.shouldInvalidField());
     }
 
+    @Test
+    void shouldDoubleDashInFieldOwnerApprovedCard() {
+        MainPage mainPage = new MainPage();
+        mainPage.transferPaymentPage();
+        val paymentPage = new PaymentPage();
+        paymentPage.fillForm(DataHelper.getDoubleDashInFieldOwnerApprovedCard());
+        assertEquals("Неверный формат", paymentPage.shouldInvalidField());
+    }
 
+    @Test
+    void shouldDoubleDashInFieldOwnerDeclinedCard() {
+        MainPage mainPage = new MainPage();
+        mainPage.transferPaymentPage();
+        val paymentPage = new PaymentPage();
+        paymentPage.fillForm(DataHelper.getDoubleDashInFieldOwnerDeclinedCard());
+        assertEquals("Неверный формат", paymentPage.shouldInvalidField());
+    }
+
+    @Test
+    void shouldBygoneYearApprovedCard() {
+        MainPage mainPage = new MainPage();
+        mainPage.transferPaymentPage();
+        val paymentPage = new PaymentPage();
+        paymentPage.fillForm(DataHelper.getBygoneYearApprovedCard());
+        assertEquals("Истёк срок действия карты", paymentPage.shouldInvalidField());
+    }
+
+    @Test
+    void shouldBygoneYearDeclinedCard() {
+        MainPage mainPage = new MainPage();
+        mainPage.transferPaymentPage();
+        val paymentPage = new PaymentPage();
+        paymentPage.fillForm(DataHelper.getBygoneYearDeclinedCard());
+        assertEquals("Истёк срок действия карты", paymentPage.shouldInvalidField());
+    }
 
 }

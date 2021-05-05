@@ -22,7 +22,7 @@ public class CreditPage {
     private SelenideElement heading = $(withText("Кредит по данным карты"));
     private SelenideElement statusOk = $(By.xpath("//div[@id='root']/div/div[2]/div[@class='notification__title']"));
     private SelenideElement statusError = $(By.xpath("//div[@id='root']/div/div[3]/div[@class='notification__title']"));
-    //TODO error field find
+    private SelenideElement invalidField = $(".input__sub");
 
     public CreditPage() {
         heading.shouldBe(visible);
@@ -41,11 +41,13 @@ public class CreditPage {
         statusOk.shouldBe(visible, Duration.ofSeconds(15));
     }
 
-    public void errorOperation() {
-        statusOk.shouldBe(visible, Duration.ofSeconds(15));
+    public void rejectedOperation() {
+        statusError.shouldBe(visible, Duration.ofSeconds(15));
     }
 
-    //TODO error field method
+    public String shouldInvalidField() {
+        return invalidField.getText();
+    }
 
 }
 

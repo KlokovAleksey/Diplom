@@ -31,6 +31,12 @@ public class DataHelper {
         return formattedDate;
     }
 
+    public static String getBygoneYear() {
+        LocalDate localDate = LocalDate.now();
+        int year = localDate.minusYears(1).getYear();
+        return String.format("%02d", year);
+    }
+
     public static String getName() {
         Faker faker = new Faker();
         String name = faker.name().firstName() + " " + faker.name().lastName();
@@ -39,14 +45,20 @@ public class DataHelper {
 
     public static String getDoubleName() {
         Faker faker = new Faker();
-        String name = faker.name().firstName() + " " + faker.name().lastName() +"-"+ faker.name().lastName();
+        String name = faker.name().firstName() + " " + faker.name().lastName() + "-" + faker.name().lastName();
+        return name;
+    }
+
+    public static String getDoubleDashInName(){
+        Faker faker = new Faker();
+        String name = faker.name().firstName() + " " + faker.name().lastName() + "-" + "-" + faker.name().lastName();
         return name;
     }
 
     public static String getCvc() {
         Random random = new Random();
-        int cvc = random.nextInt((1000-1));
-        return String.format("%03d",cvc);
+        int cvc = random.nextInt((1000 - 1));
+        return String.format("%03d", cvc);
     }
 
     public static String getApprovedCardNumber() {
@@ -67,68 +79,84 @@ public class DataHelper {
         return new CardInfo(getDeclinedCardNumber(), getMonth(), getYear(), getName(), getCvc());
     }
 
-    public static CardInfo getDoubleNameInFieldOwnerApprovedCard(){
-        return new CardInfo(getApprovedCardNumber(),getMonth(),getYear(),getDoubleName(),getCvc());
+    public static CardInfo getDoubleNameInFieldOwnerApprovedCard() {
+        return new CardInfo(getApprovedCardNumber(), getMonth(), getYear(), getDoubleName(), getCvc());
     }
 
-    public static CardInfo getDoubleNameInFieldOwnerDeclinedCard(){
-        return new CardInfo(getDeclinedCardNumber(),getMonth(),getYear(),getDoubleName(),getCvc());
+    public static CardInfo getDoubleNameInFieldOwnerDeclinedCard() {
+        return new CardInfo(getDeclinedCardNumber(), getMonth(), getYear(), getDoubleName(), getCvc());
     }
 
-    public static CardInfo getShortNameInFieldOwnerApprovedCard(){
-        return new CardInfo(getApprovedCardNumber(),getMonth(),getYear(),"Li",getCvc());
+    public static CardInfo getShortNameInFieldOwnerApprovedCard() {
+        return new CardInfo(getApprovedCardNumber(), getMonth(), getYear(), "Li", getCvc());
     }
 
-    public static CardInfo getShortNameInFieldOwnerDeclinedCard(){
-        return new CardInfo(getDeclinedCardNumber(),getMonth(),getYear(),"Li",getCvc());
+    public static CardInfo getShortNameInFieldOwnerDeclinedCard() {
+        return new CardInfo(getDeclinedCardNumber(), getMonth(), getYear(), "Li", getCvc());
     }
 
-    public static CardInfo getEmptyForm(){
+    public static CardInfo getEmptyForm() {
         return new CardInfo();
     }
 
-    public static CardInfo getInvalidMonthApprovedCard(){
+    public static CardInfo getInvalidMonthApprovedCard() {
         return new CardInfo(getApprovedCardNumber(), "13", getYear(), getName(), getCvc());
     }
 
-    public static CardInfo getInvalidMonthDeclinedCard(){
+    public static CardInfo getInvalidMonthDeclinedCard() {
         return new CardInfo(getDeclinedCardNumber(), "13", getYear(), getName(), getCvc());
     }
 
-    public static CardInfo getBygoneMonthApprovedCard(){
-        return new CardInfo(getApprovedCardNumber(),getBygoneMonth(),getYear(),getName(),getCvc());
+    public static CardInfo getBygoneMonthApprovedCard() {
+        return new CardInfo(getApprovedCardNumber(), getBygoneMonth(), getYear(), getName(), getCvc());
     }
 
-    public static CardInfo getBygoneMonthDeclinedCard(){
-        return new CardInfo(getDeclinedCardNumber(),getBygoneMonth(),getYear(),getName(),getCvc());
+    public static CardInfo getBygoneMonthDeclinedCard() {
+        return new CardInfo(getDeclinedCardNumber(), getBygoneMonth(), getYear(), getName(), getCvc());
     }
 
-    public static CardInfo getIncompleteField(){
-        return new CardInfo("4444 4444 4444 444","1","2","A","11");
+    public static CardInfo getIncompleteField() {
+        return new CardInfo("4444 4444 4444 444", "1", "2", "A", "11");
     }
 
-    public static CardInfo getSpecialCharactersInFieldOwnerApprovedCard (){
-        return new CardInfo(getApprovedCardNumber(),getMonth(),getYear(),"<#%^*&$@>",getCvc());
+    public static CardInfo getSpecialCharactersInFieldOwnerApprovedCard() {
+        return new CardInfo(getApprovedCardNumber(), getMonth(), getYear(), "<#%^*&$@>", getCvc());
     }
 
-    public static CardInfo getSpecialCharactersInFieldOwnerDeclinedCard (){
-        return new CardInfo(getDeclinedCardNumber(),getMonth(),getYear(),getName(),getCvc());
+    public static CardInfo getSpecialCharactersInFieldOwnerDeclinedCard() {
+        return new CardInfo(getDeclinedCardNumber(), getMonth(), getYear(), "<#%^*&$@>", getCvc());
     }
 
-    public static CardInfo getOneSymbolInFieldOwnerApprovedCard (){
-        return new CardInfo(getApprovedCardNumber(),getMonth(),getYear(),"I",getCvc());
+    public static CardInfo getOneSymbolInFieldOwnerApprovedCard() {
+        return new CardInfo(getApprovedCardNumber(), getMonth(), getYear(), "I", getCvc());
     }
 
-    public static CardInfo getOneSymbolInFieldOwnerDeclinedCard (){
-        return new CardInfo(getDeclinedCardNumber(),getMonth(),getYear(),"I",getCvc());
+    public static CardInfo getOneSymbolInFieldOwnerDeclinedCard() {
+        return new CardInfo(getDeclinedCardNumber(), getMonth(), getYear(), "I", getCvc());
     }
 
-    public static CardInfo getNumberInFieldOwnerApprovedCard (){
-        return new CardInfo(getApprovedCardNumber(),getMonth(),getYear(),"86573737264",getCvc());
+    public static CardInfo getNumberInFieldOwnerApprovedCard() {
+        return new CardInfo(getApprovedCardNumber(), getMonth(), getYear(), "86573737264", getCvc());
     }
 
-    public static CardInfo getNumberInFieldOwnerDeclinedCard (){
-        return new CardInfo(getDeclinedCardNumber(),getMonth(),getYear(),"86573737264",getCvc());
+    public static CardInfo getNumberInFieldOwnerDeclinedCard() {
+        return new CardInfo(getDeclinedCardNumber(), getMonth(), getYear(), "86573737264", getCvc());
+    }
+
+    public static CardInfo getDoubleDashInFieldOwnerApprovedCard(){
+        return new CardInfo(getApprovedCardNumber(), getMonth(), getYear(), getDoubleDashInName() , getCvc());
+    }
+
+    public static CardInfo getDoubleDashInFieldOwnerDeclinedCard(){
+        return new CardInfo(getDeclinedCardNumber(), getMonth(), getYear(), getDoubleDashInName() , getCvc());
+    }
+
+    public static CardInfo getBygoneYearApprovedCard(){
+        return new CardInfo(getApprovedCardNumber(), getMonth(), getBygoneYear(), getName() , getCvc());
+    }
+
+    public static CardInfo getBygoneYearDeclinedCard(){
+        return new CardInfo(getApprovedCardNumber(), getMonth(), getBygoneYear(), getName() , getCvc());
     }
 }
 

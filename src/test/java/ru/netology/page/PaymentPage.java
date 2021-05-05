@@ -24,11 +24,11 @@ public class PaymentPage {
     private SelenideElement rejected = $(By.xpath("//div[@id='root']/div/div[3]/div[@class='notification__title']"));
     private SelenideElement invalidField = $(".input__sub");
 
-    public PaymentPage(){
+    public PaymentPage() {
         heading.shouldBe(visible);
     }
 
-    public void fillForm(CardInfo cardInfo){
+    public void fillForm(CardInfo cardInfo) {
         cardNumber.setValue(cardInfo.getNumber());
         month.setValue(cardInfo.getMonth());
         year.setValue(cardInfo.getYear());
@@ -45,7 +45,8 @@ public class PaymentPage {
         rejected.shouldBe(visible, Duration.ofSeconds(15));
     }
 
-    public String shouldInvalidField(){
-       return invalidField.getText();
+    public String shouldInvalidField() {
+        return invalidField.getText();
     }
+
 }
