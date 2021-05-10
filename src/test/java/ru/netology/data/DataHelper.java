@@ -14,61 +14,55 @@ public class DataHelper {
     }
 
 
-    public static String getMonth() {
+    private static String getMonth() {
         LocalDate localDate = LocalDate.now();
         return String.format("%02d", localDate.getMonthValue());
     }
 
-    public static String getBygoneMonth() {
+    private static String getBygoneMonth() {
         LocalDate localDate = LocalDate.now();
         int month = localDate.minusMonths(1).getMonthValue();
         return String.format("%02d", month);
     }
 
-    public static String getYear() {
+    private static String getYear() {
         DateFormat df = new SimpleDateFormat("yy");
-        String formattedDate = ((SimpleDateFormat) df).format(Calendar.getInstance().getTime());
-        return formattedDate;
+        return df.format(Calendar.getInstance().getTime());
     }
 
-    public static String getBygoneYear() {
+    private static String getBygoneYear() {
         LocalDate localDate = LocalDate.now();
         int year = localDate.minusYears(1).getYear();
         return String.format("%02d", year);
     }
 
-    public static String getName() {
+    private static String getName() {
         Faker faker = new Faker();
-        String name = faker.name().firstName() + " " + faker.name().lastName();
-        return name;
+        return faker.name().firstName() + " " + faker.name().lastName();
     }
 
-    public static String getDoubleName() {
+    private static String getDoubleName() {
         Faker faker = new Faker();
-        String name = faker.name().firstName() + " " + faker.name().lastName() + "-" + faker.name().lastName();
-        return name;
+        return faker.name().firstName() + " " + faker.name().lastName() + "-" + faker.name().lastName();
     }
 
-    public static String getDoubleDashInName(){
+    private static String getDoubleDashInName(){
         Faker faker = new Faker();
-        String name = faker.name().firstName() + " " + faker.name().lastName() + "-" + "-" + faker.name().lastName();
-        return name;
+        return faker.name().firstName() + " " + faker.name().lastName() + "-" + "-" + faker.name().lastName();
     }
 
-    public static String getCvc() {
+    private static String getCvc() {
         Random random = new Random();
         int cvc = random.nextInt((1000 - 1));
         return String.format("%03d", cvc);
     }
 
-    public static String getApprovedCardNumber() {
-        String cardNumber = "4444 4444 4444 4441";
-        return cardNumber;
+    private static String getApprovedCardNumber() {
+        return "4444 4444 4444 4441";
     }
 
-    public static String getDeclinedCardNumber() {
-        String cardNumber = "4444 4444 4444 4442";
-        return cardNumber;
+    private static String getDeclinedCardNumber() {
+        return "4444 4444 4444 4442";
     }
 
     public static CardInfo getApprovedCard() {

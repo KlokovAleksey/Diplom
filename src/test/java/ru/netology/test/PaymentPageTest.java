@@ -29,7 +29,8 @@ public class PaymentPageTest {
 
     @BeforeEach
     void setUp() {
-        open("http://localhost:8080");
+        String url = System.getProperty("http.url");
+        open(url);
         DbHelper.cleanDataBase();
     }
 
@@ -91,7 +92,7 @@ public class PaymentPageTest {
     }
 
     @Test
-    void shouldEmptyFormPaymentPage() {
+    void getInvalidFieldMessageEmptyFormPaymentPage() {
         MainPage mainPage = new MainPage();
         mainPage.transferPaymentPage();
         val paymentPage = new PaymentPage();
@@ -101,7 +102,7 @@ public class PaymentPageTest {
     }
 
     @Test
-    void shouldInvalidMonthApprovedCard() {
+    void getInvalidFieldMessageMonthApprovedCard() {
         MainPage mainPage = new MainPage();
         mainPage.transferPaymentPage();
         val paymentPage = new PaymentPage();
@@ -110,7 +111,7 @@ public class PaymentPageTest {
     }
 
     @Test
-    void shouldInvalidMonthDeclinedCard() {
+    void getInvalidFieldMessageMonthDeclinedCard() {
         MainPage mainPage = new MainPage();
         mainPage.transferPaymentPage();
         val paymentPage = new PaymentPage();
@@ -119,7 +120,7 @@ public class PaymentPageTest {
     }
 
     @Test
-    void shouldBygoneMonthApprovedCard() {
+    void getInvalidFieldMessageBygoneMonthApprovedCard() {
         MainPage mainPage = new MainPage();
         mainPage.transferPaymentPage();
         val paymentPage = new PaymentPage();
@@ -128,7 +129,7 @@ public class PaymentPageTest {
     }
 
     @Test
-    void shouldBygoneMonthDeclinedCard() {
+    void getInvalidFieldMessageBygoneMonthDeclinedCard() {
         MainPage mainPage = new MainPage();
         mainPage.transferPaymentPage();
         val paymentPage = new PaymentPage();
@@ -137,7 +138,7 @@ public class PaymentPageTest {
     }
 
     @Test
-    void shouldIncompleteFieldPaymentPage() {
+    void getInvalidFieldMessageIncompleteFieldPaymentPage() {
         MainPage mainPage = new MainPage();
         mainPage.transferPaymentPage();
         val paymentPage = new PaymentPage();
@@ -146,7 +147,7 @@ public class PaymentPageTest {
     }
 
     @Test
-    void shouldSpecialCharactersInFieldOwnerApprovedCard() {
+    void getInvalidFieldMessageSpecialCharactersInFieldOwnerApprovedCard() {
         MainPage mainPage = new MainPage();
         mainPage.transferPaymentPage();
         val paymentPage = new PaymentPage();
@@ -155,7 +156,7 @@ public class PaymentPageTest {
     }
 
     @Test
-    void shouldSpecialCharactersInFieldOwnerDeclinedCard() {
+    void getInvalidFieldMessageSpecialCharactersInFieldOwnerDeclinedCard() {
         MainPage mainPage = new MainPage();
         mainPage.transferPaymentPage();
         val paymentPage = new PaymentPage();
@@ -164,7 +165,7 @@ public class PaymentPageTest {
     }
 
     @Test
-    void shouldOneSymbolInFieldApprovedCard() {
+    void getInvalidFieldMessageOneSymbolInFieldApprovedCard() {
         MainPage mainPage = new MainPage();
         mainPage.transferPaymentPage();
         val paymentPage = new PaymentPage();
@@ -173,7 +174,7 @@ public class PaymentPageTest {
     }
 
     @Test
-    void shouldOneSymbolInFieldDeclinedCard() {
+    void getInvalidFieldMessageOneSymbolInFieldDeclinedCard() {
         MainPage mainPage = new MainPage();
         mainPage.transferPaymentPage();
         val paymentPage = new PaymentPage();
@@ -182,7 +183,7 @@ public class PaymentPageTest {
     }
 
     @Test
-    void shouldNumberInFieldOwnerApprovedCard() {
+    void getInvalidFieldMessageNumberInFieldOwnerApprovedCard() {
         MainPage mainPage = new MainPage();
         mainPage.transferPaymentPage();
         val paymentPage = new PaymentPage();
@@ -191,7 +192,7 @@ public class PaymentPageTest {
     }
 
     @Test
-    void shouldNumberInFieldOwnerDeclinedCard() {
+    void getInvalidFieldMessageNumberInFieldOwnerDeclinedCard() {
         MainPage mainPage = new MainPage();
         mainPage.transferPaymentPage();
         val paymentPage = new PaymentPage();
@@ -200,7 +201,7 @@ public class PaymentPageTest {
     }
 
     @Test
-    void shouldDoubleDashInFieldOwnerApprovedCard() {
+    void getInvalidFieldMessageDoubleDashInFieldOwnerApprovedCard() {
         MainPage mainPage = new MainPage();
         mainPage.transferPaymentPage();
         val paymentPage = new PaymentPage();
@@ -209,7 +210,7 @@ public class PaymentPageTest {
     }
 
     @Test
-    void shouldDoubleDashInFieldOwnerDeclinedCard() {
+    void getInvalidFieldMessageDoubleDashInFieldOwnerDeclinedCard() {
         MainPage mainPage = new MainPage();
         mainPage.transferPaymentPage();
         val paymentPage = new PaymentPage();
@@ -218,7 +219,7 @@ public class PaymentPageTest {
     }
 
     @Test
-    void shouldBygoneYearApprovedCard() {
+    void getInvalidFieldMessagedBygoneYearApprovedCard() {
         MainPage mainPage = new MainPage();
         mainPage.transferPaymentPage();
         val paymentPage = new PaymentPage();
@@ -227,7 +228,7 @@ public class PaymentPageTest {
     }
 
     @Test
-    void shouldBygoneYearDeclinedCard() {
+    void getInvalidFieldMessageBygoneYearDeclinedCard() {
         MainPage mainPage = new MainPage();
         mainPage.transferPaymentPage();
         val paymentPage = new PaymentPage();

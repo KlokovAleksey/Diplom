@@ -1,6 +1,6 @@
 plugins {
     id 'java'
-    id'io.qameta.allure'version'2.8.1'
+    id 'io.qameta.allure' version '2.8.1'
     id 'io.freefair.lombok' version '5.3.0'
 }
 
@@ -33,17 +33,21 @@ dependencies {
     testImplementation 'com.codeborne:selenide:5.18.0'
     testImplementation 'org.junit.jupiter:junit-jupiter:5.7.0'
     testImplementation 'mysql:mysql-connector-java:8.0.22'
-    testImplementation'io.qameta.allure:allure-selenide:2.12.1'
+    testImplementation 'io.qameta.allure:allure-selenide:2.12.1'
     testImplementation 'com.github.javafaker:javafaker:1.0.2'
     compileOnly 'org.projectlombok:lombok:1.18.16'
     annotationProcessor 'org.projectlombok:lombok:1.18.16'
     testCompileOnly 'org.projectlombok:lombok:1.18.16'
     testAnnotationProcessor 'org.projectlombok:lombok:1.18.16'
     testImplementation 'commons-dbutils:commons-dbutils:1.7'
+
 }
 
 test {
     useJUnitPlatform()
     systemProperty 'selenide.headless', System.getProperty('selenide.headless')
-    systemProperty 'url', System.getProperty('url')
+    systemProperty 'db.url', System.getProperty('db.url','url')
+    systemProperty 'db.user', System.getProperty('db.user','app')
+    systemProperty 'db.password', System.getProperty('db.password','pass')
+    systemProperty 'http.url', System.getProperty('http.url','http://localhost:8080')
 }

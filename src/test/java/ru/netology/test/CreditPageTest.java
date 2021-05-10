@@ -29,7 +29,8 @@ public class CreditPageTest {
 
     @BeforeEach
     void setUp() {
-        open("http://localhost:8080");
+        String url = System.getProperty("http.url");
+        open(url);
         DbHelper.cleanDataBase();
     }
 
@@ -91,7 +92,7 @@ public class CreditPageTest {
     }
 
     @Test
-    void shouldEmptyFormCreditPage() {
+    void getInvalidFieldMessageEmptyFormCreditPage() {
         MainPage mainPage = new MainPage();
         mainPage.transferCreditPage();
         val creditPage = new CreditPage();
@@ -101,7 +102,7 @@ public class CreditPageTest {
     }
 
     @Test
-    void shouldInvalidMonthApprovedCard() {
+    void getInvalidFieldMessageInvalidMonthApprovedCard() {
         MainPage mainPage = new MainPage();
         mainPage.transferCreditPage();
         val creditPage = new CreditPage();
@@ -110,7 +111,7 @@ public class CreditPageTest {
     }
 
     @Test
-    void shouldInvalidMonthDeclinedCard() {
+    void getInvalidFieldMessageInvalidMonthDeclinedCard() {
         MainPage mainPage = new MainPage();
         mainPage.transferCreditPage();
         val creditPage = new CreditPage();
@@ -119,7 +120,7 @@ public class CreditPageTest {
     }
 
     @Test
-    void shouldBygoneMonthApprovedCard() {
+    void getInvalidFieldMessageBygoneMonthApprovedCard() {
         MainPage mainPage = new MainPage();
         mainPage.transferCreditPage();
         val creditPage = new CreditPage();
@@ -128,7 +129,7 @@ public class CreditPageTest {
     }
 
     @Test
-    void shouldBygoneMonthDeclinedCard() {
+    void getInvalidFieldMessageBygoneMonthDeclinedCard() {
         MainPage mainPage = new MainPage();
         mainPage.transferCreditPage();
         val creditPage = new CreditPage();
@@ -137,7 +138,7 @@ public class CreditPageTest {
     }
 
     @Test
-    void shouldIncompleteFieldCreditPage() {
+    void getInvalidFieldMessageIncompleteFieldCreditPage() {
         MainPage mainPage = new MainPage();
         mainPage.transferCreditPage();
         val creditPage = new CreditPage();
@@ -146,7 +147,7 @@ public class CreditPageTest {
     }
 
     @Test
-    void shouldSpecialCharactersInFieldOwnerApprovedCard() {
+    void getInvalidFieldMessageSpecialCharactersInFieldOwnerApprovedCard() {
         MainPage mainPage = new MainPage();
         mainPage.transferCreditPage();
         val creditPage = new CreditPage();
@@ -155,7 +156,7 @@ public class CreditPageTest {
     }
 
     @Test
-    void shouldSpecialCharactersInFieldOwnerDeclinedCard() {
+    void getInvalidFieldMessageSpecialCharactersInFieldOwnerDeclinedCard() {
         MainPage mainPage = new MainPage();
         mainPage.transferCreditPage();
         val creditPage = new CreditPage();
@@ -164,7 +165,7 @@ public class CreditPageTest {
     }
 
     @Test
-    void shouldOneSymbolInFieldApprovedCard() {
+    void getInvalidFieldMessageOneSymbolInFieldApprovedCard() {
         MainPage mainPage = new MainPage();
         mainPage.transferCreditPage();
         val creditPage = new CreditPage();
@@ -173,7 +174,7 @@ public class CreditPageTest {
     }
 
     @Test
-    void shouldOneSymbolInFieldDeclinedCard() {
+    void getInvalidFieldMessageOneSymbolInFieldDeclinedCard() {
         MainPage mainPage = new MainPage();
         mainPage.transferCreditPage();
         val creditPage = new CreditPage();
@@ -182,7 +183,7 @@ public class CreditPageTest {
     }
 
     @Test
-    void shouldNumberInFieldOwnerApprovedCard() {
+    void getInvalidFieldMessageNumberInFieldOwnerApprovedCard() {
         MainPage mainPage = new MainPage();
         mainPage.transferCreditPage();
         val creditPage = new CreditPage();
@@ -191,7 +192,7 @@ public class CreditPageTest {
     }
 
     @Test
-    void shouldNumberInFieldOwnerDeclinedCard() {
+    void getInvalidFieldMessageNumberInFieldOwnerDeclinedCard() {
         MainPage mainPage = new MainPage();
         mainPage.transferCreditPage();
         val creditPage = new CreditPage();
@@ -200,7 +201,7 @@ public class CreditPageTest {
     }
 
     @Test
-    void shouldDoubleDashInFieldOwnerApprovedCard() {
+    void getInvalidFieldMessageDoubleDashInFieldOwnerApprovedCard() {
         MainPage mainPage = new MainPage();
         mainPage.transferCreditPage();
         val creditPage = new CreditPage();
@@ -209,7 +210,7 @@ public class CreditPageTest {
     }
 
     @Test
-    void shouldDoubleDashInFieldOwnerDeclinedCard() {
+    void getInvalidFieldMessageDoubleDashInFieldOwnerDeclinedCard() {
         MainPage mainPage = new MainPage();
         mainPage.transferCreditPage();
         val creditPage = new CreditPage();
@@ -218,7 +219,7 @@ public class CreditPageTest {
     }
 
     @Test
-    void shouldBygoneYearApprovedCard() {
+    void getInvalidFieldMessageBygoneYearApprovedCard() {
         MainPage mainPage = new MainPage();
         mainPage.transferCreditPage();
         val creditPage = new CreditPage();
@@ -227,7 +228,7 @@ public class CreditPageTest {
     }
 
     @Test
-    void shouldBygoneYearDeclinedCard() {
+    void getInvalidFieldMessageBygoneYearDeclinedCard() {
         MainPage mainPage = new MainPage();
         mainPage.transferCreditPage();
         val creditPage = new CreditPage();

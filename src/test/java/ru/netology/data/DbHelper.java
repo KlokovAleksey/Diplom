@@ -9,9 +9,9 @@ import java.sql.SQLException;
 
 public class DbHelper {
 
-    static String url = System.getProperty("url");
-    static String user = "app";
-    static String password = "pass";
+    static String url = System.getProperty("db.url");
+    static String user = System.getProperty("db.user");
+    static String password = System.getProperty("db.password");
 
 
     public static void cleanDataBase() {
