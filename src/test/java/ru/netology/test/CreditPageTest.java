@@ -40,7 +40,7 @@ public class CreditPageTest {
         mainPage.transferCreditPage();
         val creditPage = new CreditPage();
         creditPage.fillForm(DataHelper.getApprovedCard());
-        creditPage.successfulOperation();
+        creditPage.getSuccessfulOperation();
         assertEquals("APPROVED", DbHelper.getPaymentStatus());
     }
 
@@ -50,7 +50,7 @@ public class CreditPageTest {
         mainPage.transferCreditPage();
         val creditPage = new CreditPage();
         creditPage.fillForm(DataHelper.getDeclinedCard());
-        creditPage.rejectedOperation();
+        creditPage.getRejectedOperation();
         assertEquals("DECLINED",DbHelper.getCreditStatus());
     }
 
@@ -61,7 +61,7 @@ public class CreditPageTest {
         mainPage.transferCreditPage();
         val creditPage = new CreditPage();
         creditPage.fillForm(DataHelper.getDoubleNameInFieldOwnerApprovedCard());
-        creditPage.successfulOperation();
+        creditPage.getSuccessfulOperation();
     }
 
     @Test
@@ -70,7 +70,7 @@ public class CreditPageTest {
         mainPage.transferCreditPage();
         val creditPage = new CreditPage();
         creditPage.fillForm(DataHelper.getDoubleNameInFieldOwnerDeclinedCard());
-        creditPage.rejectedOperation();
+        creditPage.getRejectedOperation();
     }
 
     @Test
@@ -79,7 +79,7 @@ public class CreditPageTest {
         mainPage.transferCreditPage();
         val creditPage = new CreditPage();
         creditPage.fillForm(DataHelper.getShortNameInFieldOwnerApprovedCard());
-        creditPage.successfulOperation();
+        creditPage.getSuccessfulOperation();
     }
 
     @Test
@@ -88,7 +88,7 @@ public class CreditPageTest {
         mainPage.transferCreditPage();
         val creditPage = new CreditPage();
         creditPage.fillForm(DataHelper.getShortNameInFieldOwnerDeclinedCard());
-        creditPage.rejectedOperation();
+        creditPage.getRejectedOperation();
     }
 
     @Test
@@ -97,8 +97,8 @@ public class CreditPageTest {
         mainPage.transferCreditPage();
         val creditPage = new CreditPage();
         creditPage.fillForm(DataHelper.getEmptyForm());
-        creditPage.shouldInvalidField();
-        assertEquals("Неверный формат", creditPage.shouldInvalidField());
+        creditPage.getInvalidField();
+        assertEquals("Неверный формат", creditPage.getInvalidField());
     }
 
     @Test
@@ -107,7 +107,7 @@ public class CreditPageTest {
         mainPage.transferCreditPage();
         val creditPage = new CreditPage();
         creditPage.fillForm(DataHelper.getInvalidMonthApprovedCard());
-        assertEquals("Неверно указан срок действия карты", creditPage.shouldInvalidField());
+        assertEquals("Неверно указан срок действия карты", creditPage.getInvalidField());
     }
 
     @Test
@@ -116,7 +116,7 @@ public class CreditPageTest {
         mainPage.transferCreditPage();
         val creditPage = new CreditPage();
         creditPage.fillForm(DataHelper.getInvalidMonthDeclinedCard());
-        assertEquals("Неверно указан срок действия карты", creditPage.shouldInvalidField());
+        assertEquals("Неверно указан срок действия карты", creditPage.getInvalidField());
     }
 
     @Test
@@ -125,7 +125,7 @@ public class CreditPageTest {
         mainPage.transferCreditPage();
         val creditPage = new CreditPage();
         creditPage.fillForm(DataHelper.getBygoneMonthApprovedCard());
-        assertEquals("Неверно указан срок действия карты", creditPage.shouldInvalidField());
+        assertEquals("Неверно указан срок действия карты", creditPage.getInvalidField());
     }
 
     @Test
@@ -134,7 +134,7 @@ public class CreditPageTest {
         mainPage.transferCreditPage();
         val creditPage = new CreditPage();
         creditPage.fillForm(DataHelper.getBygoneMonthDeclinedCard());
-        assertEquals("Неверно указан срок действия карты", creditPage.shouldInvalidField());
+        assertEquals("Неверно указан срок действия карты", creditPage.getInvalidField());
     }
 
     @Test
@@ -143,7 +143,7 @@ public class CreditPageTest {
         mainPage.transferCreditPage();
         val creditPage = new CreditPage();
         creditPage.fillForm(DataHelper.getIncompleteField());
-        assertEquals("Неверный формат", creditPage.shouldInvalidField());
+        assertEquals("Неверный формат", creditPage.getInvalidField());
     }
 
     @Test
@@ -152,7 +152,7 @@ public class CreditPageTest {
         mainPage.transferCreditPage();
         val creditPage = new CreditPage();
         creditPage.fillForm(DataHelper.getSpecialCharactersInFieldOwnerApprovedCard());
-        assertEquals("Неверный формат", creditPage.shouldInvalidField());
+        assertEquals("Неверный формат", creditPage.getInvalidField());
     }
 
     @Test
@@ -161,7 +161,7 @@ public class CreditPageTest {
         mainPage.transferCreditPage();
         val creditPage = new CreditPage();
         creditPage.fillForm(DataHelper.getSpecialCharactersInFieldOwnerDeclinedCard());
-        assertEquals("Неверный формат", creditPage.shouldInvalidField());
+        assertEquals("Неверный формат", creditPage.getInvalidField());
     }
 
     @Test
@@ -170,7 +170,7 @@ public class CreditPageTest {
         mainPage.transferCreditPage();
         val creditPage = new CreditPage();
         creditPage.fillForm(DataHelper.getOneSymbolInFieldOwnerApprovedCard());
-        assertEquals("Неверный формат", creditPage.shouldInvalidField());
+        assertEquals("Неверный формат", creditPage.getInvalidField());
     }
 
     @Test
@@ -179,7 +179,7 @@ public class CreditPageTest {
         mainPage.transferCreditPage();
         val creditPage = new CreditPage();
         creditPage.fillForm(DataHelper.getOneSymbolInFieldOwnerDeclinedCard());
-        assertEquals("Неверный формат", creditPage.shouldInvalidField());
+        assertEquals("Неверный формат", creditPage.getInvalidField());
     }
 
     @Test
@@ -188,7 +188,7 @@ public class CreditPageTest {
         mainPage.transferCreditPage();
         val creditPage = new CreditPage();
         creditPage.fillForm(DataHelper.getNumberInFieldOwnerApprovedCard());
-        assertEquals("Неверный формат", creditPage.shouldInvalidField());
+        assertEquals("Неверный формат", creditPage.getInvalidField());
     }
 
     @Test
@@ -197,7 +197,7 @@ public class CreditPageTest {
         mainPage.transferCreditPage();
         val creditPage = new CreditPage();
         creditPage.fillForm(DataHelper.getNumberInFieldOwnerDeclinedCard());
-        assertEquals("Неверный формат", creditPage.shouldInvalidField());
+        assertEquals("Неверный формат", creditPage.getInvalidField());
     }
 
     @Test
@@ -206,7 +206,7 @@ public class CreditPageTest {
         mainPage.transferCreditPage();
         val creditPage = new CreditPage();
         creditPage.fillForm(DataHelper.getDoubleDashInFieldOwnerApprovedCard());
-        assertEquals("Неверный формат", creditPage.shouldInvalidField());
+        assertEquals("Неверный формат", creditPage.getInvalidField());
     }
 
     @Test
@@ -215,7 +215,7 @@ public class CreditPageTest {
         mainPage.transferCreditPage();
         val creditPage = new CreditPage();
         creditPage.fillForm(DataHelper.getDoubleDashInFieldOwnerDeclinedCard());
-        assertEquals("Неверный формат", creditPage.shouldInvalidField());
+        assertEquals("Неверный формат", creditPage.getInvalidField());
     }
 
     @Test
@@ -224,7 +224,7 @@ public class CreditPageTest {
         mainPage.transferCreditPage();
         val creditPage = new CreditPage();
         creditPage.fillForm(DataHelper.getBygoneYearApprovedCard());
-        assertEquals("Истёк срок действия карты", creditPage.shouldInvalidField());
+        assertEquals("Истёк срок действия карты", creditPage.getInvalidField());
     }
 
     @Test
@@ -233,7 +233,7 @@ public class CreditPageTest {
         mainPage.transferCreditPage();
         val creditPage = new CreditPage();
         creditPage.fillForm(DataHelper.getBygoneYearDeclinedCard());
-        assertEquals("Истёк срок действия карты", creditPage.shouldInvalidField());
+        assertEquals("Истёк срок действия карты", creditPage.getInvalidField());
     }
 
 }

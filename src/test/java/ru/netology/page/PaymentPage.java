@@ -37,15 +37,15 @@ public class PaymentPage {
         button.click();
     }
 
-    public void successfulOperation() {
+    public void getSuccessfulOperation() {
         successfully.shouldBe(visible, Duration.ofSeconds(15));
     }
 
-    public void rejectedOperation() {
+    public void getRejectedOperation() {
         rejected.shouldBe(visible, Duration.ofSeconds(15));
     }
 
-    public String shouldInvalidField() {
+    public String getInvalidField() {
         return invalidField.getText();
     }
 

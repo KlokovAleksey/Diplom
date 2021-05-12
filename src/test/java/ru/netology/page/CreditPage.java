@@ -37,15 +37,15 @@ public class CreditPage {
         button.click();
     }
 
-    public void successfulOperation() {
+    public void getSuccessfulOperation() {
         statusOk.shouldBe(visible, Duration.ofSeconds(15));
     }
 
-    public void rejectedOperation() {
+    public void getRejectedOperation() {
         statusError.shouldBe(visible, Duration.ofSeconds(15));
     }
 
-    public String shouldInvalidField() {
+    public String getInvalidField() {
         return invalidField.getText();
     }
 
