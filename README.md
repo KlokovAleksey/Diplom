@@ -1,7 +1,7 @@
 ### Ссылки на документацию :
 * [План тестирования](https://github.com/KlokovAleksey/Diplom)
-* [Отчёт по итогам тестирования]()
-* [Отчёт по итогам тестирования]()
+* [Отчёт по итогам тестирования](https://github.com/KlokovAleksey/Diplom/blob/main/documents/Report.md)
+* [Отчёт по итогам автоматизации](https://github.com/KlokovAleksey/Diplom/blob/main/documents/Summary.md)
 
 ### Тестирование сервиса покупки тура с помощью двух спопсобов:
 1.  Обычная оплата по дебетовой карте
